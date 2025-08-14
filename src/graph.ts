@@ -28,11 +28,32 @@ class Graph{
         }
         return result;
     }
+     addEdge(fromNodeId:string,toNodeId:string,properties:{}):string{
+        if(this.nodes.has(fromNodeId) && this.nodes.has(toNodeId)){
+            const edgeId = (this.edgeIdCounter++).toString();
+            this.edges.set(edgeId,{
+                id: edgeId,
+                properties,
+                fromNodeId,
+                toNodeId
+            })
+            this.nodes.get(fromNodeId).outedges.add(edgeId);
+            this.nodes.get(toNodeId).inedges.add(edgeId);
+            return edgeId;
+        }else{
+            return "fromNodeId/toNodeId doesnot exist";
+        }
+    }
 }
 
 let gh = new Graph();
-let node = gh.addNode({'name' : 'Pookie'});
+let node0 = gh.addNode({'name' : 'Pookie'});
+let node1 = gh.addNode({'name' : 'Momma'});
 //console.log(gh.nodes.get('0').properties);
 //console.log(gh);
-let result: any[] = gh.findNodes("name","Pookie");
-console.log(result);
+// let result: any[] = gh.findNodes("name","Pookie");
+// console.log(result);
+let edge = gh.addEdge('0','1',{'relation' : 'forlife'});
+//console.log(edge);
+//console.log(gh);
+console.log(gh.edges.get('0').properties['relation']);
