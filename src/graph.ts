@@ -88,6 +88,9 @@ class Graph{
         }
         return neighbors;
     }
+    getNode(nodeId : string){
+        return this.nodes.get(nodeId);
+    }
 }
 
 let gh = new Graph();
