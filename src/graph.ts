@@ -60,7 +60,7 @@ class Graph{
     }
     deleteNode(nodeId : string) : boolean{
         let node = this.nodes.get(nodeId);
-        if(!edge)
+        if(!node1)
             return false;
        for(let edge of node.inedges)    this.deleteEdge(edge);
        for(let edge of node.outedges)   this.deleteEdge(edge);
@@ -102,20 +102,22 @@ class Graph{
     }
 }
 
-let gh = new Graph();
-let node0 = gh.addNode({'name' : 'Pookie'});
-let node1 = gh.addNode({'name' : 'Momma'});
-//console.log(gh.nodes.get('0').properties);
-//console.log(gh);
-// let result: any[] = gh.findNodes("name","Pookie");
-// console.log(result);
- let edge = gh.addEdge('0','1',{'relation' : 'forlife'});
-// console.log(edge);
-//console.log(gh);
-// console.log(gh.edges.get('0').properties['relation']);
-//console.log(gh.deleteEdge('0'));
-// console.log(gh);
-// gh.deleteNode(node0);
-// console.log(gh);
-gh.updateNode('0',{'name' : 'pookieman'});
-console.log(gh.getNode('0'));
+let graph = new Graph();
+
+let node0 = graph.addNode({'name' : 'Mitsuri'});
+let node1 = graph.addNode({'name' : 'Obanai'});
+console.log(graph.nodes.get(node0).properties);
+
+let result: any[] = graph.findNodes("name","Obanai");
+console.log(result);
+
+let edge1 = graph.addEdge(node0,node1,{'relation' : 'friend'});
+
+graph.updateNode(node0,{'name' : 'Tanjiro'});
+console.log(graph.getNode('0'));
+
+graph.deleteEdge(edge1);
+
+console.log(graph);
+
+
