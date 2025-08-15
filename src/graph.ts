@@ -94,6 +94,12 @@ class Graph{
     getEdge(edgeId : string){
         return this.edges.get(edgeId);
     }
+    updateNode(nodeId : string, properties: Object){
+        let node = this.nodes.get(nodeId);
+        if(!node)
+            return null
+        node.properties = properties;
+    }
 }
 
 let gh = new Graph();
@@ -108,6 +114,8 @@ let node1 = gh.addNode({'name' : 'Momma'});
 //console.log(gh);
 // console.log(gh.edges.get('0').properties['relation']);
 //console.log(gh.deleteEdge('0'));
-console.log(gh);
-gh.deleteNode(node0);
-console.log(gh);
+// console.log(gh);
+// gh.deleteNode(node0);
+// console.log(gh);
+gh.updateNode('0',{'name' : 'pookieman'});
+console.log(gh.getNode('0'));
