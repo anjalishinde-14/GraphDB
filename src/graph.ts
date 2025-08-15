@@ -91,6 +91,9 @@ class Graph{
     getNode(nodeId : string){
         return this.nodes.get(nodeId);
     }
+    getEdge(edgeId : string){
+        return this.edges.get(edgeId);
+    }
 }
 
 let gh = new Graph();
