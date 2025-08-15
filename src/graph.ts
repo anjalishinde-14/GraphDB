@@ -54,6 +54,16 @@ class Graph{
         this.edgeIdCounter--;
         return true;
     }
+    deleteNode(nodeId : string) : boolean{
+        let node = this.nodes.get(nodeId);
+        if(!edge)
+            return false;
+       for(let edge of node.inedges)    this.deleteEdge(edge);
+       for(let edge of node.outedges)   this.deleteEdge(edge);
+       this.nodes.delete(nodeId);
+       this.nodeIdCounter--;
+       return true;
+    }
 }
 
 let gh = new Graph();
@@ -65,7 +75,9 @@ let node1 = gh.addNode({'name' : 'Momma'});
 // console.log(result);
  let edge = gh.addEdge('0','1',{'relation' : 'forlife'});
 // console.log(edge);
-console.log(gh);
+//console.log(gh);
 // console.log(gh.edges.get('0').properties['relation']);
-console.log(gh.deleteEdge('0'));
+//console.log(gh.deleteEdge('0'));
+console.log(gh);
+gh.deleteNode(node0);
 console.log(gh);
