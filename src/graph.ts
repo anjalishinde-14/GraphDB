@@ -1,3 +1,7 @@
+type Neighbor = {
+    inbound : any[],
+    outbound : any[]
+}
 class Graph{
     nodes: Map<string,any>;
     edges: Map<string,any>;
@@ -63,6 +67,26 @@ class Graph{
        this.nodes.delete(nodeId);
        this.nodeIdCounter--;
        return true;
+    }
+    getNeighbors(nodeId : string){
+        let node = this.nodes.get(nodeId);
+        if(!node)
+            return null;
+        let neighbors : Neighbor = {
+            inbound : [],
+            outbound : []
+        }
+        for(let egdeId of node.inedges){
+            let edge = this.edges.get(egdeId);
+            let node = this.nodes.get(edge.fromNodeId);
+            neighbors.inbound.push(node);
+        }
+        for(let egdeId of node.outedges){
+            let edge = this.edges.get(egdeId);
+            let node = this.nodes.get(edge.toNodeId);
+            neighbors.outbound.push(node);
+        }
+        return neighbors;
     }
 }
 
