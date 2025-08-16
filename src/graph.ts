@@ -121,3 +121,4 @@ graph.deleteEdge(edge1);
 console.log(graph);
 
 
+export default Graph;
