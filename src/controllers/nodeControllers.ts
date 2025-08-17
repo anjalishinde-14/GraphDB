@@ -9,4 +9,17 @@ function createNode(req: Request, res: Response) {
   let nodeid = GRAPH.addNodes(properties);
   res.status(201).json({ message: `node created at ${nodeid}` });
 }
-export default createNode;
+
+function findNodes(req: Request, res: Response) {
+    const { key, value } = req.query;
+    if (!key || !value) {
+      res.status(400).json({ message: "key or value is not passed in query" });
+    }
+    console.log(key, value);
+    if (typeof key === "string" && typeof value === "string") {
+      let result = GRAPH.findNodes(key, value);
+      console.log(result);
+      res.status(200).json(result);
+    }
+}
+export { createNode, findNodes };
