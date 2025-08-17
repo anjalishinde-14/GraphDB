@@ -31,4 +31,17 @@ function getNode(req: Request, res: Response) {
   }
   res.json(node);
 }
-export { createNode, findNodes, getNode };
+
+function deleteNode(req: Request, res: Response) {
+  const nodeId = req.params.nodeId;
+  if (nodeId === "") {
+    res.status(400).json({ message: "nodeId is not passed in params" });
+  }
+  const result = GRAPH.deleteNode(nodeId);
+  if (result) {
+    res.status(200).json({ message: `nodeId is deleted ${nodeId}` });
+  } else {
+    res.status(200).json({ message: `node is not found` });
+  }
+}
+export { createNode, findNodes, getNode, deleteNode };
