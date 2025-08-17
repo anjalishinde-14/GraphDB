@@ -13,7 +13,7 @@ class Graph{
         this.nodeIdCounter=0;
         this.edgeIdCounter=0;
     }
-    addNode(properties:{}):string{
+    addNodes(properties:{}):string{
         const nodeId = (this.nodeIdCounter++).toString();
         this.nodes.set(nodeId,{
             id:nodeId,
@@ -104,8 +104,8 @@ class Graph{
 
 let graph = new Graph();
 
-let node0 = graph.addNode({'name' : 'Mitsuri'});
-let node1 = graph.addNode({'name' : 'Obanai'});
+let node0 = graph.addNodes({'name' : 'Mitsuri'});
+let node1 = graph.addNodes({'name' : 'Obanai'});
 console.log(graph.nodes.get(node0).properties);
 
 let result: any[] = graph.findNodes("name","Obanai");
