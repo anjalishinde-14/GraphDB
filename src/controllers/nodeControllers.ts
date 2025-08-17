@@ -61,4 +61,16 @@ function updateNode(req: Request, res: Response) {
      res.status(400).json({ message: error });
    }
 }
-export { createNode, findNodes, getNode, deleteNode, updateNode };
+
+function getNeighbors(req: Request, res: Response) {
+    const nodeId = req.params.nodeId;
+    if (nodeId === "") {
+      res.status(400).json({ message: "nodeId is not passed in params" });
+    }
+    let result = GRAPH.getNeighbors(nodeId);
+    if (!result) {
+      res.status(404).json({ message: "node not found" });
+    }
+    res.status(200).json(result);
+}
+export { createNode, findNodes, getNode, deleteNode, updateNode, getNeighbors };
