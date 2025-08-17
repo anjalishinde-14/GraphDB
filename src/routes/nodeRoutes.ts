@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNode, findNodes } from "../controllers/nodeControllers"
+import { createNode, findNodes, getNode } from "../controllers/nodeControllers"
 const nodeRouter = Router();
 
 nodeRouter.get("/", (req, res) => {
@@ -8,5 +8,6 @@ nodeRouter.get("/", (req, res) => {
 
 nodeRouter.route("/").post(createNode);
 nodeRouter.route("/find").get(findNodes);
+nodeRouter.route(":/nodeId").get(getNode);
 
 export default nodeRouter;

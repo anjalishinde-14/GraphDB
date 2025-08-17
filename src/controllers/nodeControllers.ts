@@ -22,4 +22,13 @@ function findNodes(req: Request, res: Response) {
       res.status(200).json(result);
     }
 }
-export { createNode, findNodes };
+
+function getNode(req: Request, res: Response) {
+  const nodeId = req.params.nodeId;
+  const node = GRAPH.getNode(nodeId);
+  if (!node) {
+    res.status(404).json({ error: "Node not found" });
+  }
+  res.json(node);
+}
+export { createNode, findNodes, getNode };
