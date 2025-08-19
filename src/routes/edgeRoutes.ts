@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createEdge } from "../controllers/edgeControllers";
+import { createEdge, getEdge } from "../controllers/edgeControllers";
 
 const edgeRouter = Router();
 
@@ -8,5 +8,7 @@ edgeRouter.get("/", (req, res) => {
 });
 
 edgeRouter.route("/").post(createEdge);
+edgeRouter.get("/:edgeId",getEdge);
+
 
 export default edgeRouter;

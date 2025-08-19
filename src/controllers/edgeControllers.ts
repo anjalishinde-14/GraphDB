@@ -16,4 +16,13 @@ function createEdge(req: Request, res: Response) {
   }
 }
 
-export { createEdge };
+function getEdge(req: Request, res: Response) {
+  const edgeId = req.params.edgeId;
+  const edge = GRAPH.getEdge(edgeId);
+  if (!edge) {
+    res.status(404).json({ error: "Node not found" });
+  }
+  res.status(200).json(edge);
+}
+
+export { createEdge, getEdge };
