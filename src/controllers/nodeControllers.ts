@@ -73,4 +73,5 @@ function getNeighbors(req: Request, res: Response) {
     }
     res.status(200).json(result);
 }
+
 export { createNode, findNodes, getNode, deleteNode, updateNode, getNeighbors };
