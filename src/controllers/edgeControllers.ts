@@ -25,4 +25,14 @@ function getEdge(req: Request, res: Response) {
   res.status(200).json(edge);
 }
 
-export { createEdge, getEdge };
+function deleteEdge(req: Request, res: Response) {
+  const edgeId = req.params.edgeId;
+  const result = GRAPH.deleteEdge(edgeId);
+  if (result) {
+    res.status(200).json({ message: `edgeId is deleted ${edgeId}` });
+  } else {
+    res.status(200).json({ message: `edge is not found` });
+  }
+}
+
+export { createEdge, getEdge, deleteEdge };
